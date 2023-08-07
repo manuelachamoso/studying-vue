@@ -30,9 +30,9 @@
             <button type="submit" class="btn btn-primary">Comentar</button>
           </div>
           <div class="list-group">
-            <div class="list-group-item" ">
-              <span class="comment__author">Autor: <strong></strong></span>
-              <p>{{ comment.message }}</p>
+            <div class="list-group-item" v-for="comment in comments">
+              <span class="comment__author">Autor: <strong>{{ comment.name }}</strong></span>
+              <p> {{ comment.message }} </p>
               <div>
                 <a href="#" title="Excluir" v-on:click.prevent="removeComment(index)">Excluir</a>
               </div>
@@ -41,7 +41,17 @@
           <hr />
         </div>
       `,
-      
+      // Camada de model. Es una función que tiene que retornar un objeto. Todas las propiedades de este objeto estarán disponibles para utilizar dentro del template
+      data() {
+        return {
+          comments: [
+            {
+              name: "Manu",
+              message: "Hello"
+            }
+          ]
+        }
+      } 
     })
   </script>
 </body>
